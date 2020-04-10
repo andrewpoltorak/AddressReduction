@@ -1,0 +1,50 @@
+﻿@page
+@model AddressReduction.Pages.Addresses.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Address</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Address.Id" />
+            <div class="form-group">
+                <label asp-for="Address.LongAddress" class="control-label"></label>
+                <input asp-for="Address.LongAddress" class="form-control" />
+                <span asp-validation-for="Address.LongAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.ShortAddress" class="control-label"></label>
+                <input asp-for="Address.ShortAddress" class="form-control" />
+                <span asp-validation-for="Address.ShortAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.Created" class="control-label"></label>
+                <input asp-for="Address.Created" class="form-control" readonly="readonly"/>
+                <span asp-validation-for="Address.Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.Clicked" class="control-label"></label>
+                <input asp-for="Address.Clicked" class="form-control" readonly="readonly"/>
+                <span asp-validation-for="Address.Clicked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

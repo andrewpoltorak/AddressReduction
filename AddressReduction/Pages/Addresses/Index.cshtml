@@ -1,0 +1,57 @@
+﻿@page
+@model AddressReduction.Pages.Addresses.IndexModel
+
+@{
+    ViewData["Title"] = "Creating short URL";
+}
+
+<h3>Creating short URL</h3>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address[0].LongAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address[0].ShortAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address[0].Created)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address[0].Clicked)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Address)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LongAddress)
+                    </td>
+                    <td>
+                        <input type="submit" value="@item.ShortAddress" asp-page-handler="Clicked" asp-route-id="@item.Id" class="btn-link" formtarget="_blank"/>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Clicked)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
