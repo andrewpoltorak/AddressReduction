@@ -33,7 +33,7 @@ namespace AddressReduction
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<AddressReductionContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AddressReductionContext")));
@@ -42,6 +42,8 @@ namespace AddressReduction
             {
                 options.Conventions.AddPageRoute("/Addresses/Index", "");
             });
+
+            services.AddMvc().AddRazorOptions(options => options.AllowRecompilingViewsOnFileChange = true);
                    
         }
 
