@@ -34,7 +34,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LongAddress)
+                        <label>@item.LongAddress</label>                                            
                     </td>
                     <td>
                         <input type="submit" value="@item.ShortAddress" asp-page-handler="Clicked" asp-route-id="@item.Id" class="btn-link"/>

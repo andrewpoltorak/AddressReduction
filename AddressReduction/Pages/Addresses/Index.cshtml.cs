@@ -45,12 +45,15 @@ namespace AddressReduction.Pages.Addresses
                         throw;
                     }
                 }
-                else
-                {
-                    return NotFound();
-                }
             }
-            return Redirect(url);
+            if (!string.IsNullOrEmpty(url))
+            {
+                return Redirect(url);
+            }
+            else
+            {
+                return NotFound();
+            }            
         }
     }
 }
